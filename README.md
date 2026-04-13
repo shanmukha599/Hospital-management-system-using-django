@@ -1,4 +1,4 @@
-#Healthcare Management System
+**#Healthcare Management System**
 
 ##Description
 
@@ -20,3 +20,21 @@ This project aims to digitize and simplify healthcare workflows, making it easie
 - **Security:** Integrated reCAPTCHA for form protection.
 - **Media Handling**: File uploads for images and documents using Django Storages (AWS S3 compatible).
 - **Responsive UI:** Built with Crispy Forms and Bootstrap for a clean, mobile-friendly interface.
+
+##Technologies Used
+- **Backend:** Django 4.2.2
+- **Database:** SQLite (configurable for PostgreSQL/MySQL via dj-database-url)
+- **Frontend:** HTML, CSS, Bootstrap 5 (via Crispy Forms)
+- **Rich Text Editing:** CKEditor 5
+- **Authentication:** Django's built-in auth with custom User model
+- **File Storage:** AWS S3 integration via Django Storages
+- **Deployment:** Gunicorn, Whitenoise for static files
+- **Other Libraries:** Channels for WebSockets, Anymail for email, ShortUUID for IDs, Mathfilters for calculations, Environs for environment variables
+- 
+##Installation
+- Prerequisites
+- Python 3.8 or higher
+- pip (Python package manager)
+- Git
+git clone https://github.com/shanmukha599/healthcare-management-system.git
+cd healthcare-management-system
