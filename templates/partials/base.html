@@ -77,9 +77,12 @@
                 </div>
             </div>
         </nav>
-
-        {% block content %}
-        {% endblock %}
+        {% for message in messages %}
+        <div class = "alert alert-{{message.tags}} alert-disimissible fade show text-center" role="alert">
+            <strong> {{message}}</strong>
+            <button type="button" class = "btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %} {% block content %} {% endblock content %}
 
         <section class="container">
             <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">

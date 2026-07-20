@@ -1,40 +1,107 @@
-**#Healthcare Management System**
+# Healthcare Management System
 
-##Description
+## Description
 
-The Healthcare Management System (HMS) is a comprehensive Django-based web application designed to streamline healthcare operations. It facilitates user authentication, profile management for doctors and patients, appointment scheduling, medical record-keeping, lab test management, prescriptions, and billing. The system supports role-based access, ensuring doctors and patients have tailored interfaces for their needs. Built with modern web technologies, it includes features like rich text editing, CAPTCHA for security, and responsive UI components.
+The Healthcare Management System is a Django web application for managing doctors, patients, appointments, medical records, prescriptions, billing, and notifications. It provides separate interfaces for doctors and patients and includes role-based authentication, profile management, and appointment lifecycle tracking.
 
-This project aims to digitize and simplify healthcare workflows, making it easier for medical professionals to manage patient interactions and for patients to access healthcare services efficiently.
+## Features
+- Custom user model with role-based access for doctors and patients
+- Doctor and patient profile management
+- Appointment booking, cancellation, rescheduling, and completion tracking
+- Medical records, lab tests, and prescriptions tied to appointments
+- Billing records and total amount tracking
+- Notification system for patients
+- Django admin enhanced with Jazzmin theme
+- Local media uploads and static file support
+- Environment-based configuration using `environs`
 
+## Technologies
+- Django 4.2.2
+- SQLite database
+- Django Jazzmin admin theme
+- Django Crispy Forms with Bootstrap 5 support
+- Django CKEditor 5
+- Django AnyMail
+- Django Import Export
+- Django ReCaptcha
+- Django Storages
+- Gunicorn
+- Whitenoise
 
-##Features
-- **User Authentication & Roles:** Custom user model with email-based login, supporting Doctor and Patient roles.
-- **Doctor Management:** Profiles with details like specialization, qualifications, experience, and availability.
-- **Patient Management:** Comprehensive patient profiles including medical history and contact information.
-- **Appointment Scheduling:** Book, manage, and track appointments with status updates (Scheduled, Completed, Pending, Cancelled).
-- **Medical Services:** Define services with costs and assign available doctors.
-- **Medical Records:** Store diagnosis, treatment notes, lab tests, and prescriptions per appointment.
-- **Billing System:** Generate bills with tax calculations and payment tracking.
-- **Notifications:** Real-time notifications for appointment updates.
-- **Admin Dashboard:** Enhanced Django admin with Jazzmin theme for easy management.
-- **Security:** Integrated reCAPTCHA for form protection.
-- **Media Handling**: File uploads for images and documents using Django Storages (AWS S3 compatible).
-- **Responsive UI:** Built with Crispy Forms and Bootstrap for a clean, mobile-friendly interface.
+## Requirements
+Dependencies are listed in `requirements.txt`. Key packages include:
+- `Django==4.2.2`
+- `django-jazzmin`
+- `django-crispy-forms`
+- `django-ckeditor-5`
+- `django-anymail`
+- `django-import-export`
+- `django-recaptcha`
+- `django-storages`
+- `environs`
+- `gunicorn`
 
-##Technologies Used
-- **Backend:** Django 4.2.2
-- **Database:** SQLite (configurable for PostgreSQL/MySQL via dj-database-url)
-- **Frontend:** HTML, CSS, Bootstrap 5 (via Crispy Forms)
-- **Rich Text Editing:** CKEditor 5
-- **Authentication:** Django's built-in auth with custom User model
-- **File Storage:** AWS S3 integration via Django Storages
-- **Deployment:** Gunicorn, Whitenoise for static files
-- **Other Libraries:** Channels for WebSockets, Anymail for email, ShortUUID for IDs, Mathfilters for calculations, Environs for environment variables
-- 
-##Installation
-- Prerequisites
-- Python 3.8 or higher
-- pip (Python package manager)
-- Git
-git clone https://github.com/shanmukha599/healthcare-management-system.git
-cd healthcare-management-system
+## Installation
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/shanmukha599/healthcare-management-system.git
+   cd healthcare-management-system
+   ```
+
+2. Create and activate a virtual environment:
+   ```bash
+   python -m venv venv
+   .\venv\Scripts\activate
+   ```
+
+3. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. Create a `.env` file at the project root and add required environment variables:
+   ```text
+   FROM_EMAIL=you@example.com
+   EMAIL_BACKEND=django.core.mail.backends.console.EmailBackend
+   DEFAULT_FROM_EMAIL=you@example.com
+   SERVER_EMAIL=server@example.com
+   STRIPE_PUBLIC_KEY=your_stripe_public_key
+   STRIPE_SECRET_KEY=your_stripe_secret_key
+   PAYPAL_CLIENT_ID=your_paypal_client_id
+   PAYPAL_SECRET_ID=your_paypal_secret_id
+   MAILGUN_API_KEY=your_mailgun_api_key
+   MAILGUN_SENDER_DOMAIN=your_mailgun_domain
+   ```
+
+## Database setup
+1. Apply migrations:
+   ```bash
+   python manage.py migrate
+   ```
+
+2. Create a superuser:
+   ```bash
+   python manage.py createsuperuser
+   ```
+
+## Run the application
+```bash
+python manage.py runserver
+```
+Open `http://127.0.0.1:8000/` in your browser.
+
+## Project structure
+- `base/` — core models and appointment-related logic
+- `doctor/` — doctor-specific views and models
+- `patient/` — patient-specific views and models
+- `userauths/` — custom user model and authentication
+- `templates/` — HTML templates
+- `static/` — CSS and asset files
+- `media/` — uploaded images and files
+
+## Notes
+- This project uses SQLite by default via `db.sqlite3`.
+- Local media files are stored in the `media/` directory.
+- Keep `DEBUG=True` only during development.
+- The `db.sqlite3` file and `media/` uploads should not be committed to source control.
+
